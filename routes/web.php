@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'LinkController@index');
+Route::get('/link/index', 'LinkController@index');
 Route::get('/link/edit/{id}', 'LinkController@edit');
 Route::post('/link/update', 'LinkController@update');
 Route::get('/link/delete/{id}', 'LinkController@delete');
 Route::get('/link/create', 'LinkController@create');
 Route::post('/link/store', 'LinkController@store');
 
-Route::get('/show/{name}', 'LinkController@show');
+Route::get('/show/{name}', 'ShowController@index');
+
+Route::get('/', 'HomeController@index');

@@ -57,12 +57,4 @@ class LinkController extends Controller
 
         return redirect('/');
     }
-
-    public function show(Request $request)
-    {
-        $link = Link::where('name', $request->name)->first();
-        $link['url'] = Storage::url($link['file']);
-
-        return view('links.show', ['link' => $link]);
-    }
 }

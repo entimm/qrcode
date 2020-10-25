@@ -28,7 +28,7 @@
     </div>
 
     <br>
-    <a href="/link/create">创建</a>
+    <a href="/link/create" class="btn btn-primary" role="button">创建</a>
 </div>
 </body>
 </html>
