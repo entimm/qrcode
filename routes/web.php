@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/link/index', 'LinkController@index');
+Route::get('/link/manage', 'LinkController@index');
 Route::get('/link/edit/{id}', 'LinkController@edit');
 Route::post('/link/update', 'LinkController@update');
 Route::get('/link/delete/{id}', 'LinkController@delete');
