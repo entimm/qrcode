@@ -31,7 +31,7 @@ class LinkController extends Controller
             'file' => $path,
         ]);
 
-        return redirect('/');
+        return redirect('/link/manage');
     }
 
     public function edit(Request $request)
@@ -48,13 +48,13 @@ class LinkController extends Controller
         $path = $file->store('public/show');
         Link::where('id', $request->id)->update(['file' => $path]);
 
-        return redirect('/');
+        return redirect('/link/manage');
     }
 
     public function delete(Request $request)
     {
         Link::where('id', $request->id)->delete();
 
-        return redirect('/');
+        return redirect('/link/manage');
     }
 }

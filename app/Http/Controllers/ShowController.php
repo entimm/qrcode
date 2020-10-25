@@ -13,6 +13,6 @@ class ShowController extends Controller
         $link = Link::where('name', $request->name)->first();
         $link['url'] = Storage::url($link['file']);
 
-        return view('links.show', ['link' => $link]);
+        return view('show.index', ['link' => $link]);
     }
 }
