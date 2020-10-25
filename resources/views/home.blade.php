@@ -22,7 +22,7 @@
         <div class="card mb-3 h-100" style="max-width: 18rem;">
           <div class="card-header">{{$item['name']}}</div>
           <div class="card-body text-dark">
-            <img src="{{$item['url']}}" style="width: 100%;margin: 10px auto">
+            <img src="{{$item['url']}}" style="width: 100%;margin: 0 0 10px 0">
           </div>
         </div>
         </div>
