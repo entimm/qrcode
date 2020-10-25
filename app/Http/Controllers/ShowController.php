@@ -10,7 +10,7 @@ class ShowController extends Controller
 {
     public function index(Request $request)
     {
-        $link = Link::where('name', $request->name)->first();
+        $link = Link::where('id', $request->id)->first();
         $link['url'] = Storage::url($link['file']);
 
         return view('show.index', ['link' => $link]);

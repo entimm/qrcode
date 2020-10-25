@@ -20,6 +20,6 @@ Route::get('/link/delete/{id}', 'LinkController@delete');
 Route::get('/link/create', 'LinkController@create');
 Route::post('/link/store', 'LinkController@store');
 
-Route::get('/show/{name}', 'ShowController@index');
+Route::get('/show/{id}', 'ShowController@index');
 
 Route::get('/', 'HomeController@index');
