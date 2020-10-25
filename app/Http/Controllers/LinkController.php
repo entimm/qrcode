@@ -11,6 +11,11 @@ class LinkController extends Controller
     public function index(Request $request)
     {
         $links = Link::all();
+        $links = array_map(function ($link) {
+            $link['url'] = Storage::url($link['file']);
+
+            return $link;
+        }, $links->all());
 
         return view('links.index', [
             'links' => $links,
