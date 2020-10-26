@@ -51,7 +51,10 @@ class LinkController extends Controller
     {
         $file = $request->file('file');
         $path = $file->store('public/show');
-        Link::where('id', $request->id)->update(['file' => $path]);
+        Link::where('id', $request->id)->update([
+            'name' => $request->name,
+            'file' => $path,
+        ]);
 
         return redirect('/link/manage');
     }
