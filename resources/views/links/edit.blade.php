@@ -13,7 +13,7 @@
     <form action="/link/update" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">名称</label>
-            <input type="text" class="form-control" value="{{$link['name']}}" id="name" disabled>
+            <input type="text" class="form-control" value="{{$link['name']}}" name="name" id="name">
         </div>
 
         <div class="form-group">
