@@ -49,12 +49,16 @@ class LinkController extends Controller
 
     public function update(Request $request)
     {
-        $file = $request->file('file');
-        $path = $file->store('public/show');
-        Link::where('id', $request->id)->update([
+        $data = [
             'name' => $request->name,
-            'file' => $path,
-        ]);
+        ];
+        $file = $request->file('file');
+        if ($file) {
+            $path = $file->store('public/show');
+            $data['file'] = $path;
+        }
+
+        Link::where('id', $request->id)->update($data);
 
         return redirect('/link/manage');
     }
