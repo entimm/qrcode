@@ -51,7 +51,7 @@ class LinkController extends Controller
             $data['desc_img'] = $path;
         }
 
-        Link::create($data);
+        Link::create(array_filter($data));
 
         return redirect()->route('links.index');
     }
@@ -61,6 +61,10 @@ class LinkController extends Controller
         $groups = Group::all();
 
         $link = Link::where('id', $linkId)->first();
+        if (!$link) {
+            return null;
+        }
+
         $link['url'] = Storage::url($link['file']);
 
         return view('links.edit', [
@@ -88,7 +92,7 @@ class LinkController extends Controller
             $data['desc_img'] = $path;
         }
 
-        Link::where('id', $linkId)->update($data);
+        Link::where('id', $linkId)->update(array_filter($data));
 
         return redirect()->route('links.index');
     }
