@@ -102,7 +102,11 @@ class LinkController extends Controller
 
     public function show($linkId, Request $request)
     {
-        $link = Link::where('id', $linkId)->first()->toArray();
+        if (!$link = Link::where('id', $linkId)->first()) {
+            return null;
+        }
+
+        $link = $link->toArray();
         $link['url'] = $link['file'] ? Storage::url($link['file']) : '';
         $link['desc_img_url'] = $link['desc_img'] ? Storage::url($link['desc_img']) : '';
 
