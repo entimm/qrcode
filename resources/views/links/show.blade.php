@@ -13,8 +13,13 @@
         margin-left: 0;
       }
       .jumbotron .container {
-          max-height: 8em;
+          max-height: 20em;
           overflow-y: scroll;
+      }
+      .jumbotron .container h1 {
+          text-align: center;
+          color: #007bff;
+          font-size: 2.5rem;
       }
       .jumbotron {
           padding: 2rem 1rem;
