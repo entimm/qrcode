@@ -33,7 +33,7 @@ class GroupController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('groups.index');
+        return redirect()->route('manage.groups');
     }
 
     public function edit($groupId, Request $request)
@@ -53,14 +53,14 @@ class GroupController extends Controller
 
         Group::where('id', $groupId)->update($data);
 
-        return redirect()->route('groups.index');
+        return redirect()->route('manage.groups');
     }
 
     public function destroy($groupId, Request $request)
     {
         Group::where('id', $groupId)->delete();
 
-        return redirect()->route('groups.index');
+        return redirect()->route('manage.groups');
     }
 
     public function show($groupId, Request $request)

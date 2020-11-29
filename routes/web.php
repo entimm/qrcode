@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/manage/groups', 'LinkController@index')->name('manage.groups');
+Route::get('/manage/groups', 'GroupController@index')->name('manage.groups');
 Route::get('groups/{link}/delete', ['as' => 'groups.delete', 'uses' => 'GroupController@destroy']);
 Route::resource('groups', 'GroupController')->except('index');
 
