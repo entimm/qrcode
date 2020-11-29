@@ -18,6 +18,7 @@
       }
       .jumbotron {
           padding: 2rem 1rem;
+          margin-bottom: 0.5rem;
       }
     </style>
 </head>
@@ -27,6 +28,7 @@
     @if($link['desc_text'])
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
+            <h1 class="display-4">{{$link['name']}}</h1>
             <p class="lead">{{$link['desc_text']}}</p>
         </div>
     </div>
