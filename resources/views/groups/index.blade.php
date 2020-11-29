@@ -11,7 +11,7 @@
             margin-top: 10px;
         }
         .btn {
-            margin: auto 3px;
+            margin: 0 3px 5px 10px;
         }
     </style>
 </head>
@@ -22,11 +22,11 @@
     <a href="{{route('groups.create')}}" class="btn btn-primary" role="button">创建</a>
     <br>
     <br>
-    @foreach(array_chunk($groups, 3) as $row)
+    @foreach(array_chunk($groups, 2) as $row)
     <div class="row">
         @foreach($row as $item)
-        <div class="col mb-3">
-        <div class="card mb-3 h-100" style="max-width: 18rem;">
+        <div class="col mb-6">
+        <div class="card mb-5">
           <div class="card-header">{{$item['name']}}</div>
           <div class="card-body text-dark">
             <a href="{{route('groups.show', $item['id'])}}" class="btn btn-info btn-sm" role="button">展示</a>
