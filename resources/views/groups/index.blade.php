@@ -29,7 +29,8 @@
         <div class="card mb-5">
           <div class="card-header">{{$item['name']}}</div>
           <div class="card-body text-dark">
-            <a href="{{route('groups.show', $item['id'])}}" class="btn btn-info btn-sm" role="button">展示</a>
+            <a href="/{{$item['id']}}" class="btn btn-info btn-sm" role="button">展示给用户</a>
+            <a href="{{route('groups.show', $item['id'])}}" class="btn btn-info btn-sm" role="button">管理</a>
             <a href="{{route('groups.edit', $item['id'])}}" class="btn btn-success btn-sm" role="button">编辑</a>
             <a href="{{route('groups.delete', $item['id'])}}" class="btn btn-secondary btn-sm" role="button">删除</a>
           </div>
