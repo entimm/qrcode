@@ -39,7 +39,7 @@
             <input type="file" class="form-control" value="{{$link['desc_img']}}" name="desc_img" id="desc_img" accept="image/png, image/jpeg">
         </div>
         <div class="form-group">
-            <img src="{{$link['desc_img']}}" style="width: 80%;margin: 10px auto">
+            <img src="{{$link['desc_img_url']}}" style="width: 80%;margin: 10px auto">
         </div>
 
         <div class="form-group">

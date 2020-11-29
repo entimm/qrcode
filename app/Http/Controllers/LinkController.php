@@ -65,7 +65,9 @@ class LinkController extends Controller
             return null;
         }
 
-        $link['url'] = Storage::url($link['file']);
+        $link = $link->toArray();
+        $link['url'] = $link['file'] ? Storage::url($link['file']) : '';
+        $link['desc_img_url'] = $link['desc_img'] ? Storage::url($link['desc_img']) : '';
 
         return view('links.edit', [
             'link' => $link,
