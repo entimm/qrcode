@@ -17,19 +17,6 @@
         </div>
 
         <div class="form-group">
-            <label for="group">分组</label>
-            <select class="form-control" name="group" id="group">
-              <option value="0">请选择</option>
-              @foreach ($groups as $group)
-                  <option value="{{$group->id}}" @if ($link['group_id'] == $group->id) selected @endif>
-                    {{$group->name}}
-                  </option>
-              @endforeach
-
-            </select>
-        </div>
-
-        <div class="form-group">
             <label for="desc_text">描述文字</label>
             <textarea class="form-control" id="desc_text" name="desc_text" rows="5">{{$link['desc_text']}}</textarea>
         </div>
