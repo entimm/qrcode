@@ -29,7 +29,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">{{$link['name']}}</h1>
-            <p class="lead">{{$link['desc_text']}}</p>
+            <p class="lead"><pre>{{$link['desc_text']}}</pre></p>
         </div>
     </div>
     @endif
