@@ -57,7 +57,7 @@ class LinkController extends Controller
         Link::create(array_filter($data));
 
         if (session('group_id') === null) {
-            return redirect()->route('links.index');
+            return redirect()->route('manage.links');
         }
 
         return redirect()->route('groups.show', session('group_id'));
@@ -104,7 +104,7 @@ class LinkController extends Controller
         Link::where('id', $linkId)->update(array_filter($data));
 
         if (session('group_id') === null) {
-            return redirect()->route('links.index');
+            return redirect()->route('manage.links');
         }
 
         return redirect()->route('groups.show', session('group_id'));
@@ -115,7 +115,7 @@ class LinkController extends Controller
         Link::where('id', $linkId)->delete();
 
         if (session('group_id') === null) {
-            return redirect()->route('links.index');
+            return redirect()->route('manage.links');
         }
 
         return redirect()->route('groups.show', session('group_id'));
