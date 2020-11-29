@@ -22,6 +22,4 @@ Route::resource('links', 'LinkController');
 Route::get('groups/{link}/delete', ['as' => 'groups.delete', 'uses' => 'GroupController@destroy']);
 Route::resource('groups', 'GroupController');
 
-
-
 Route::get('/', 'HomeController@index');

@@ -12,12 +12,35 @@
         margin-right: 0;
         margin-left: 0;
       }
+      .jumbotron .container {
+          max-height: 8em;
+          overflow-y: scroll;
+      }
+      .jumbotron {
+          padding: 2rem 1rem;
+      }
     </style>
 </head>
-<body style="background-color: #2f3132">
+<body style="background-color: #e9ecef">
 
 <div class="container-fluid">
+    @if($link['desc_text'])
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <p class="lead">{{$link['desc_text']}}</p>
+        </div>
+    </div>
+    @endif
+
+    @if($link['desc_img_url'])
+    <img src="{{$link['desc_img_url']}}" style="width: 100%">
+    @endif
+
+    <hr>
+
+    @if($link['url'])
     <img src="{{$link['url']}}" style="width: 100%">
+    @endif
 </div>
 </body>
 </html>

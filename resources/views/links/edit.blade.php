@@ -30,7 +30,20 @@
         </div>
 
         <div class="form-group">
-            <label for="file">图片</label>
+            <label for="desc_text">描述文字</label>
+            <textarea class="form-control" id="desc_text" name="desc_text" rows="5">{{$link['desc_text']}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="desc_img">描述图片</label>
+            <input type="file" class="form-control" value="{{$link['desc_img']}}" name="desc_img" id="desc_img" accept="image/png, image/jpeg">
+        </div>
+        <div class="form-group">
+            <img src="{{$link['desc_img']}}" style="width: 80%;margin: 10px auto">
+        </div>
+
+        <div class="form-group">
+            <label for="file">二维码</label>
             <input type="file" class="form-control" value="{{$link['file']}}" name="file" id="file" accept="image/png, image/jpeg">
         </div>
 

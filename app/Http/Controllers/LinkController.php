@@ -34,13 +34,24 @@ class LinkController extends Controller
 
     public function store(Request $request)
     {
-        $file = $request->file('file');
-        $path = $file->store('public/show');
-        Link::create([
-            'name' => $request->name,
-            'file' => $path,
-            'group_id' => $request->group,
-        ]);
+        $data = [
+            'name' => $request->name ?: '',
+            'group_id' => $request->group ?: 0,
+            'desc_text' => $request->desc_text ?: '',
+            'file' => '',
+            'desc_img' => '',
+        ];
+        if ($file = $request->file('file')) {
+            $path = $file->store('public/show');
+            $data['file'] = $path;
+        }
+
+        if ($file = $request->file('desc_img')) {
+            $path = $file->store('public/show');
+            $data['desc_img'] = $path;
+        }
+
+        Link::create($data);
 
         return redirect()->route('links.index');
     }
@@ -61,13 +72,20 @@ class LinkController extends Controller
     public function update($linkId, Request $request)
     {
         $data = [
-            'name' => $request->name,
-            'group_id' => $request->group,
+            'name' => $request->name ?: '',
+            'group_id' => $request->group ?: 0,
+            'desc_text' => $request->desc_text ?: '',
+            'file' => '',
+            'desc_img' => '',
         ];
-        $file = $request->file('file');
-        if ($file) {
+        if ($file = $request->file('file')) {
             $path = $file->store('public/show');
             $data['file'] = $path;
+        }
+
+        if ($file = $request->file('desc_img')) {
+            $path = $file->store('public/show');
+            $data['desc_img'] = $path;
         }
 
         Link::where('id', $linkId)->update($data);
@@ -84,8 +102,9 @@ class LinkController extends Controller
 
     public function show($linkId, Request $request)
     {
-        $link = Link::where('id', $linkId)->first();
-        $link['url'] = Storage::url($link['file']);
+        $link = Link::where('id', $linkId)->first()->toArray();
+        $link['url'] = $link['file'] ? Storage::url($link['file']) : '';
+        $link['desc_img_url'] = $link['desc_img'] ? Storage::url($link['desc_img']) : '';
 
         return view('links.show', ['link' => $link]);
     }
