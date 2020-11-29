@@ -19,7 +19,7 @@
       .jumbotron .container h1 {
           text-align: center;
           color: #007bff;
-          font-size: 1.6rem;
+          font-size: 1.3rem;
           /*font-weight: 200;*/
       }
       .jumbotron {
