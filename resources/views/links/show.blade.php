@@ -34,9 +34,8 @@
 
     @if($link['desc_img_url'])
     <img src="{{$link['desc_img_url']}}" style="width: 100%">
-    @endif
-
     <hr>
+    @endif
 
     @if($link['url'])
     <img src="{{$link['url']}}" style="width: 100%">
