@@ -19,7 +19,8 @@
       .jumbotron .container h1 {
           text-align: center;
           color: #007bff;
-          font-size: 2.5rem;
+          font-size: 1.8rem;
+          /*font-weight: 200;*/
       }
       .jumbotron {
           padding: 2rem 1rem;

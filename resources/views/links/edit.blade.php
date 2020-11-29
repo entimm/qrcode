@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <label for="desc_img">描述图片</label>
-            <input type="file" class="form-control" value="{{$link['desc_img']}}" name="desc_img" id="desc_img" accept="image/png, image/jpeg">
+            <input type="file" class="form-control" value="{{$link['desc_img']}}" name="desc_img" id="desc_img" accept="image/png, image/jpeg, image/jpg">
         </div>
         <div class="form-group">
             <img src="{{$link['desc_img_url']}}" style="width: 80%;margin: 10px auto">
@@ -31,7 +31,7 @@
 
         <div class="form-group">
             <label for="file">二维码</label>
-            <input type="file" class="form-control" value="{{$link['file']}}" name="file" id="file" accept="image/png, image/jpeg">
+            <input type="file" class="form-control" value="{{$link['file']}}" name="file" id="file" accept="image/png, image/jpeg, image/jpg">
         </div>
 
         <div class="form-group">
