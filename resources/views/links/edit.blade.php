@@ -10,10 +10,23 @@
 
 <div class="container">
     <br>
-    <form action="/link/update" method="post" enctype="multipart/form-data">
+    <form action="{{route('links.update', $link['id'])}}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">名称</label>
             <input type="text" class="form-control" value="{{$link['name']}}" name="name" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="group">分组</label>
+            <select class="form-control" name="group" id="group">
+              <option value="0">请选择</option>
+              @foreach ($groups as $group)
+                  <option value="{{$group->id}}" @if ($link['group_id'] == $group->id) selected @endif>
+                    {{$group->name}}
+                  </option>
+              @endforeach
+
+            </select>
         </div>
 
         <div class="form-group">
@@ -27,6 +40,7 @@
 
         <input type="hidden" name="id" value="{{$link['id']}}">
         {{csrf_field()}}
+        @method('PUT')
 
         <button type="submit" class="btn btn-primary">提交</button>
     </form>

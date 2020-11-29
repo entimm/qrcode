@@ -13,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/link/manage', 'LinkController@index');
-Route::get('/link/edit/{id}', 'LinkController@edit');
-Route::post('/link/update', 'LinkController@update');
-Route::get('/link/delete/{id}', 'LinkController@delete');
-Route::get('/link/create', 'LinkController@create');
-Route::post('/link/store', 'LinkController@store');
+Route::get('/manage/links', 'LinkController@index');
+Route::get('links/{link}/delete', ['as' => 'links.delete', 'uses' => 'LinkController@destroy']);
+Route::resource('links', 'LinkController');
 
 Route::get('/show/{id}', 'ShowController@index');
 

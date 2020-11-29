@@ -18,7 +18,7 @@
 
 <div class="container">
     <br>
-    <a href="/link/create" class="btn btn-primary" role="button">创建</a>
+    <a href="{{route('links.create')}}" class="btn btn-primary" role="button">创建</a>
     <br>
     <br>
     @foreach(array_chunk($links, 3) as $row)
@@ -28,10 +28,10 @@
         <div class="card mb-3 h-100" style="max-width: 18rem;">
           <div class="card-header">{{$item['name']}}</div>
           <div class="card-body text-dark">
-            <a href="/show/{{$item['id']}}"><img src="{{$item['url']}}" style="width: 100%;margin: 0 0 10px 0"></a>
-            <a href="/show/{{$item['id']}}" class="btn btn-info btn-sm" role="button">展示</a>
-            <a href="/link/edit/{{$item['id']}}" class="btn btn-success btn-sm" role="button">编辑</a>
-            <a href="/link/delete/{{$item['id']}}" class="btn btn-secondary btn-sm" role="button">删除</a>
+            <a href="{{route('links.show', $item['id'])}}"><img src="{{$item['url']}}" style="width: 100%;margin: 0 0 10px 0"></a>
+            <a href="{{route('links.show', $item['id'])}}" class="btn btn-info btn-sm" role="button">展示</a>
+            <a href="{{route('links.edit', $item['id'])}}" class="btn btn-success btn-sm" role="button">编辑</a>
+            <a href="{{route('links.delete', $item['id'])}}" class="btn btn-secondary btn-sm" role="button">删除</a>
           </div>
         </div>
         </div>

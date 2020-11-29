@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -24,7 +25,11 @@ class LinkController extends Controller
 
     public function create(Request $request)
     {
-        return view('links.create');
+        $groups = Group::all();
+
+        return view('links.create', [
+            'groups' => $groups,
+        ]);
     }
 
     public function store(Request $request)
@@ -34,23 +39,30 @@ class LinkController extends Controller
         Link::create([
             'name' => $request->name,
             'file' => $path,
+            'group_id' => $request->group,
         ]);
 
-        return redirect('/link/manage');
+        return redirect('/manage/links');
     }
 
-    public function edit(Request $request)
+    public function edit($linkId, Request $request)
     {
-        $link = Link::where('id', $request->id)->first();
+        $groups = Group::all();
+
+        $link = Link::where('id', $linkId)->first();
         $link['url'] = Storage::url($link['file']);
 
-        return view('links.edit', ['link' => $link]);
+        return view('links.edit', [
+            'link' => $link,
+            'groups' => $groups,
+        ]);
     }
 
     public function update(Request $request)
     {
         $data = [
             'name' => $request->name,
+            'group_id' => $request->group,
         ];
         $file = $request->file('file');
         if ($file) {
@@ -60,13 +72,21 @@ class LinkController extends Controller
 
         Link::where('id', $request->id)->update($data);
 
-        return redirect('/link/manage');
+        return redirect('/manage/links');
     }
 
-    public function delete(Request $request)
+    public function destroy($linkId, Request $request)
     {
-        Link::where('id', $request->id)->delete();
+        Link::where('id', $linkId)->delete();
 
-        return redirect('/link/manage');
+        return redirect('/manage/links');
+    }
+
+    public function show($linkId, Request $request)
+    {
+        $link = Link::where('id', $linkId)->first();
+        $link['url'] = Storage::url($link['file']);
+
+        return view('links.show', ['link' => $link]);
     }
 }

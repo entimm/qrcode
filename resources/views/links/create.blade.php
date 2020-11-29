@@ -10,10 +10,23 @@
 
 <div class="container">
     <br>
-    <form action="/link/store" method="post" enctype="multipart/form-data">
+    <form action="{{route('links.store')}}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">名称</label>
             <input type="text" class="form-control" name="name" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="group">分组</label>
+            <select class="form-control" name="group" id="group">
+              <option value="0">请选择</option>
+              @foreach ($groups as $group)
+                  <option value="{{$group->id}}">
+                    {{$group->name}}
+                  </option>
+              @endforeach
+
+            </select>
         </div>
 
         <div class="form-group">
