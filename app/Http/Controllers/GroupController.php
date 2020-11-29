@@ -72,6 +72,8 @@ class GroupController extends Controller
             return $link;
         }, $links);
 
+        session(['group_id' => $groupId]);
+
         return view('links.index', [
             'links' => $links,
         ]);

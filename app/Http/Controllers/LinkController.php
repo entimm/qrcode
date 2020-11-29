@@ -18,6 +18,8 @@ class LinkController extends Controller
             return $link;
         }, $links);
 
+        session(['group_id' => null]);
+
         return view('links.index', [
             'links' => $links,
         ]);
@@ -34,9 +36,10 @@ class LinkController extends Controller
 
     public function store(Request $request)
     {
+        $groupId = session('group_id', 0);
         $data = [
             'name' => $request->name ?: '',
-            'group_id' => $request->group ?: 0,
+            'group_id' => $groupId,
             'desc_text' => $request->desc_text ?: '',
             'file' => '',
             'desc_img' => '',
@@ -53,7 +56,11 @@ class LinkController extends Controller
 
         Link::create(array_filter($data));
 
-        return redirect()->route('links.index');
+        if (session('group_id') === null) {
+            return redirect()->route('links.index');
+        }
+
+        return redirect()->route('groups.show', session('group_id'));
     }
 
     public function edit($linkId, Request $request)
@@ -96,14 +103,22 @@ class LinkController extends Controller
 
         Link::where('id', $linkId)->update(array_filter($data));
 
-        return redirect()->route('links.index');
+        if (session('group_id') === null) {
+            return redirect()->route('links.index');
+        }
+
+        return redirect()->route('groups.show', session('group_id'));
     }
 
     public function destroy($linkId, Request $request)
     {
         Link::where('id', $linkId)->delete();
 
-        return redirect()->route('links.index');
+        if (session('group_id') === null) {
+            return redirect()->route('links.index');
+        }
+
+        return redirect()->route('groups.show', session('group_id'));
     }
 
     public function show($linkId, Request $request)
