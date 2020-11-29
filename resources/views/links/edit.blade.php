@@ -38,7 +38,6 @@
             <img src="{{$link['url']}}" style="width: 80%;margin: 10px auto">
         </div>
 
-        <input type="hidden" name="id" value="{{$link['id']}}">
         {{csrf_field()}}
         @method('PUT')
 

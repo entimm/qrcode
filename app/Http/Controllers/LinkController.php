@@ -11,12 +11,12 @@ class LinkController extends Controller
 {
     public function index(Request $request)
     {
-        $links = Link::all();
+        $links = Link::all()->toArray();
         $links = array_map(function ($link) {
             $link['url'] = Storage::url($link['file']);
 
             return $link;
-        }, $links->all());
+        }, $links);
 
         return view('links.index', [
             'links' => $links,
@@ -42,7 +42,7 @@ class LinkController extends Controller
             'group_id' => $request->group,
         ]);
 
-        return redirect('/manage/links');
+        return redirect()->route('links.index');
     }
 
     public function edit($linkId, Request $request)
@@ -58,7 +58,7 @@ class LinkController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update($linkId, Request $request)
     {
         $data = [
             'name' => $request->name,
@@ -70,16 +70,16 @@ class LinkController extends Controller
             $data['file'] = $path;
         }
 
-        Link::where('id', $request->id)->update($data);
+        Link::where('id', $linkId)->update($data);
 
-        return redirect('/manage/links');
+        return redirect()->route('links.index');
     }
 
     public function destroy($linkId, Request $request)
     {
         Link::where('id', $linkId)->delete();
 
-        return redirect('/manage/links');
+        return redirect()->route('links.index');
     }
 
     public function show($linkId, Request $request)
